@@ -1,0 +1,25 @@
+df <- read.csv('File Name',sep=';')
+
+#summary(data)---->stastitical summary
+
+#clean data:
+check any null values or NA
+any(is.na(dat))
+
+#structure of data:
+str(data)
+
+#find corelation for numeric variables:to check the interaction
+num.cols <- sapply(df, is.numeric)
+cor.data <- cor(df[,num.cols])
+cor.data
+
+#corelation plots using follwing packages, find the corelation relation 
+#install.packages('corrgram',repos = 'http://cran.us.r-project.org')
+#install.packages('corrplot',repos = 'http://cran.us.r-project.org')
+library(corrplot)
+library(corrgram)
+
+##corelation b/w varoables graphically
+corrgram(test304,order=TRUE, lower.panel=panel.shade,
+  upper.panel=panel.pie, text.panel=panel.txt)
