@@ -23,3 +23,22 @@ library(corrgram)
 ##corelation b/w varoables graphically
 corrgram(test304,order=TRUE, lower.panel=panel.shade,
   upper.panel=panel.pie, text.panel=panel.txt)
+======================for KNN==========
+set.seed(101)
+#test304[sapply(test304, is.character)] <- lapply(test304[sapply(test304, is.character)],as.factor)
+
+test3041<-lapply(test304,as.integer)
+is.numeric(test3041)
+overallcondition<-test3041[1:51]
+overallconditionexp<-overallcondition[-14]
+
+
+#normalization all the values are ups and down's so need to normalize before predict
+normalize<-function(x)
+  {
+return((x-min(x))/(max(x)-min(x)))
+       }
+
+overall.subset<-as.data.frame(lapply(overallconditionexp,normalize))
+
+#head(overall.subset)
